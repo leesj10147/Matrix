@@ -222,7 +222,17 @@ public final class Matrix {
                 result[i][j] = T2.getValue(i - nd2 - 1, j - nd2 - 1) + P5.getValue(i - nd2 - 1, j - nd2 - 1);
 
         return new Matrix(result,0,result.length - 1,0, result[0].length - 1);
-
-
+    }
+    @Override
+    public Matrix clone()
+    {
+        int result[][] = new int[this.getRow_size()][this.getColumn_size()];
+        for (int i = row_s; i <= row_e; ++i)
+            System.arraycopy(value[i], column_s, result[i - row_s], 0, column_size);
+        return new Matrix(result,0,result.length - 1,0, result[0].length - 1);
+    }
+    public void setValue(int i, int j, int value)
+    {
+        this.value[i + this.row_s][j + this.column_s] = value;
     }
 }
