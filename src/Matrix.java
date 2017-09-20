@@ -1,5 +1,3 @@
-import org.omg.CORBA.MARSHAL;
-
 public final class Matrix {
     private final int[][] value;// value must be not change
     private final int row_size;
@@ -234,5 +232,13 @@ public final class Matrix {
     public void setValue(int i, int j, int value)
     {
         this.value[i + this.row_s][j + this.column_s] = value;
+    }
+    public boolean contain(int n)
+    {
+        for (int i = 0; i < row_size; ++i)
+            for (int j = 0; j < column_size; ++j)
+                if(getValue(i, j) == n)
+                    return true;
+        return false;
     }
 }
